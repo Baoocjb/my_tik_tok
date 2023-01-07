@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bao.mapper.VlogMapperCustomer">
+    <select id="getIndexVlogVOList" parameterType="map" resultType="com.bao.vo.IndexVlogVO">
+        select
+           v.id              as vlogId,
+           v.vloger_id       as vlogerId,
+           u.face            as vlogerFace,
+           u.nickname        as vlogerName,
+           v.title           as content,
+           v.url             as url,
+           v.cover           as cover,
+           v.width           as width,
+           v.height          as height,
+           v.like_counts     as likeCounts,
+           v.comments_counts as commentsCounts,
+           v.is_private      as isPrivate
+        from
+             vlog v
+        left join
+            users u
+        on
+            v.vloger_id = u.id
+        where
+            v.is_private = 0
+            <if test="paramMap.search != null and paramMap.search != ''">
+                and v.title like concat('%', #{paramMap.search}, '%')
+            </if>
+        order by
+            v.created_time
+        desc
+    </select>
+
+    <select id="getIndexVlogVODetail" parameterType="map" resultType="com.bao.vo.IndexVlogVO">
+        select
+            v.id              as vlogId,
+            v.vloger_id       as vlogerId,
+            u.face            as vlogerFace,
+            u.nickname        as vlogerName,
+            v.title           as content,
+            v.url             as url,
+            v.cover           as cover,
+            v.width           as width,
+            v.height          as height,
+            v.like_counts     as likeCounts,
+            v.comments_counts as commentsCounts,
+            v.is_private      as isPrivate
+        from
+            vlog v
+        left join
+            users u
+        on
+            v.vloger_id = u.id
+        where
+            v.id = #{paramMap.vlogId}
+    </select>
+
+    <select id="queryMyLikedList" parameterType="map" resultType="com.bao.vo.IndexVlogVO">
+        select
+            v.id              as vlogId,
+            v.vloger_id       as vlogerId,
+            u.face            as vlogerFace,
+            u.nickname        as vlogerName,
+            v.title           as content,
+            v.url             as url,
+            v.cover           as cover,
+            v.width           as width,
+            v.height          as height,
+            v.like_counts     as likeCounts,
+            v.comments_counts as commentsCounts,
+            v.is_private      as isPrivate
+        from
+            vlog v
+        left join
+            my_liked_vlog mlv
+        on
+            v.id = mlv.vlog_id
+        left join
+            users u
+        on
+            mlv.user_id = u.id
+        where
+            u.id = #{paramMap.myId}
+          and
+            v.is_private = 0
+        order by
+            v.created_time
+        desc
+    </select>
+</mapper>

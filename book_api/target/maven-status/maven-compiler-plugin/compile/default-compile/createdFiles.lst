@@ -1,0 +1,9 @@
+com\bao\config\WebMvcConfig.class
+com\bao\controller\BaseInfoProperties.class
+com\bao\controller\FileController.class
+com\bao\Application.class
+com\bao\interceptor\PassportInterceptor.class
+com\bao\config\MinIOConfig.class
+com\bao\controller\UserInfoController.class
+com\bao\config\Knife4jConfig.class
+com\bao\controller\PassportController.class
