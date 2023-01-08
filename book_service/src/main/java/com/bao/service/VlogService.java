@@ -72,4 +72,14 @@ public interface VlogService {
      * @return
      */
     PagedGridResult queryMyLikedList(String userId, Integer page, Integer pageSize);
+
+    /**
+     * 查询我 关注/是否互粉 的视频列表
+     * @param myId
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    PagedGridResult queryMyFollowList(String myId, Integer page, Integer pageSize, Integer isFriend);
+
 }

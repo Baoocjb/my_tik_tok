@@ -68,4 +68,6 @@ public class UserInfoController extends BaseInfoProperties {
         userService.updateUserInfo(updatedUserBO);
         return GraceJSONResult.ok(updatedUserBO);
     }
+
+
 }

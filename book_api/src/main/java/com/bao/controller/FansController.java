@@ -1,6 +1,5 @@
 package com.bao.controller;
 
-import com.bao.pojo.Users;
 import com.bao.result.GraceJSONResult;
 import com.bao.result.ResponseStatusEnum;
 import com.bao.service.FansService;
@@ -9,7 +8,6 @@ import com.bao.service.base.BaseInfoProperties;
 import com.bao.utils.PagedGridResult;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,21 +23,14 @@ public class FansController extends BaseInfoProperties {
 
     @PostMapping("follow")
     public GraceJSONResult follow(@RequestParam String myId, @RequestParam String vlogerId) {
-        if (StringUtils.isBlank(myId) || StringUtils.isBlank(vlogerId)) {
+        if(!checkUserIsExist(myId) || !checkUserIsExist(vlogerId)){
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
         }
         // 判断当前用户，自己不能关注自己
         if (myId.equalsIgnoreCase(vlogerId)) {
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
         }
-        Users my = userService.getUser(myId);
-        if (my == null) {
-            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
-        }
-        Users vloger = userService.getUser(vlogerId);
-        if (vloger == null) {
-            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
-        }
+
         fansService.doFollow(myId, vlogerId);
         // 此时 redis 要放在 controller 中, 避免 service 事务回滚但是 redis 操作不能取消
         redis.increment(REDIS_MY_FOLLOWS_COUNTS + ":" + myId, 1);
@@ -50,15 +41,7 @@ public class FansController extends BaseInfoProperties {
 
     @PostMapping("cancel")
     public GraceJSONResult cancel(@RequestParam String myId, @RequestParam String vlogerId) {
-        if (StringUtils.isBlank(myId) || StringUtils.isBlank(vlogerId)) {
-            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
-        }
-        Users my = userService.getUser(myId);
-        if (my == null) {
-            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
-        }
-        Users vloger = userService.getUser(vlogerId);
-        if (vloger == null) {
+        if(!checkUserIsExist(myId) || !checkUserIsExist(vlogerId)){
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
         }
         fansService.doCancel(myId, vlogerId);
@@ -71,15 +54,7 @@ public class FansController extends BaseInfoProperties {
 
     @GetMapping("queryDoIFollowVloger")
     public GraceJSONResult queryDoIFollowVloger(@RequestParam String myId, @RequestParam String vlogerId) {
-        if (StringUtils.isBlank(myId) || StringUtils.isBlank(vlogerId)) {
-            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
-        }
-        Users my = userService.getUser(myId);
-        if (my == null) {
-            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
-        }
-        Users vloger = userService.getUser(vlogerId);
-        if (vloger == null) {
+        if(!checkUserIsExist(myId) || !checkUserIsExist(vlogerId)){
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
         }
         return GraceJSONResult.ok(fansService.queryDoIFollowVloger(myId, vlogerId));

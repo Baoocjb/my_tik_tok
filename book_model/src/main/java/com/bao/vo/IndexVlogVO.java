@@ -10,7 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class IndexVlogVO {
-    private String vlogId;
+    private String id;
     private String vlogerId;
     private String vlogerFace;
     private String vlogerName;

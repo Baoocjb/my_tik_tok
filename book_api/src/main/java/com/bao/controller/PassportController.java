@@ -49,7 +49,7 @@ public class PassportController extends BaseInfoProperties {
     }
 
     @PostMapping("login")
-    public GraceJSONResult login(@Valid @RequestBody LoginRegisterBO loginRegisterBo, HttpServletRequest request) throws Exception {
+    public GraceJSONResult login(@Valid @RequestBody LoginRegisterBO loginRegisterBo, HttpServletRequest request){
         String mobile = loginRegisterBo.getMobile();
         String smsCode = loginRegisterBo.getSmsCode();
 
@@ -78,7 +78,7 @@ public class PassportController extends BaseInfoProperties {
     }
 
     @PostMapping("logout")
-    public GraceJSONResult logout(@RequestParam String userId, HttpServletRequest request) throws Exception {
+    public GraceJSONResult logout(@RequestParam String userId, HttpServletRequest request) {
         // 清除 redis 中的 token
         redis.del(REDIS_USER_TOKEN + ":" + userId);
         return GraceJSONResult.ok();

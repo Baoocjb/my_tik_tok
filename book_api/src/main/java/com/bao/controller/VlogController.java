@@ -51,10 +51,7 @@ public class VlogController extends BaseInfoProperties {
     @GetMapping("detail")
     public GraceJSONResult detail(@RequestParam(defaultValue = "") String userId,
                                   @RequestParam String vlogId) {
-        if(checkStrsIsNotValid(vlogId)){
-            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
-        }
-        if (vlogService.getVlog(vlogId) == null) {
+        if (!checkVlogIsExist(vlogId)) {
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
         }
         return GraceJSONResult.ok(vlogService.getIndexVlogVODetailById(userId, vlogId));
@@ -70,10 +67,7 @@ public class VlogController extends BaseInfoProperties {
         if (pageSize == null) {
             pageSize = COMMON_PAGE_SIZE;
         }
-        if(StringUtils.isBlank(userId)){
-            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
-        }
-        if (userService.getUser(userId) == null) {
+        if(!checkUserIsExist(userId)){
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
         }
         PagedGridResult pagedGridResult = vlogService.queryMyIndexVlog(userId, YesOrNo.NO.type, page, pageSize);
@@ -90,25 +84,36 @@ public class VlogController extends BaseInfoProperties {
         if (pageSize == null) {
             pageSize = COMMON_PAGE_SIZE;
         }
-        if(StringUtils.isBlank(userId)){
-            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
-        }
-        if (userService.getUser(userId) == null) {
+        if(!checkUserIsExist(userId)){
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
         }
         PagedGridResult pagedGridResult = vlogService.queryMyIndexVlog(userId, YesOrNo.YES.type, page, pageSize);
         return GraceJSONResult.ok(pagedGridResult);
     }
 
+    @GetMapping("myLikedList")
+    public GraceJSONResult myLikedList(@RequestParam String userId,
+                                       @RequestParam Integer page,
+                                       @RequestParam Integer pageSize) {
+        if (page == null) {
+            page = COMMON_START_PAGE;
+        }
+        if (pageSize == null) {
+            pageSize = COMMON_PAGE_SIZE;
+        }
+        if(!checkUserIsExist(userId)){
+            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
+        }
+        PagedGridResult pagedGridResult = vlogService.queryMyLikedList(userId, page, pageSize);
+        return GraceJSONResult.ok(pagedGridResult);
+    }
+
     @PostMapping("changeToPrivate")
     public GraceJSONResult changeToPrivate(@RequestParam String userId, @RequestParam String vlogId) {
-        if(checkStrsIsNotValid(userId, vlogId)){
+        if(!checkUserIsExist(userId)){
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
         }
-        if (userService.getUser(userId) == null) {
-            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
-        }
-        if (vlogService.getVlog(vlogId) == null) {
+        if (!checkVlogIsExist(vlogId)) {
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
         }
         vlogService.changeMyVlogToPrivate(userId, vlogId);
@@ -117,13 +122,10 @@ public class VlogController extends BaseInfoProperties {
 
     @PostMapping("changeToPublic")
     public GraceJSONResult changeToPublic(@RequestParam String userId, @RequestParam String vlogId) {
-        if(checkStrsIsNotValid(userId, vlogId)){
+        if(!checkUserIsExist(userId)){
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
         }
-        if (userService.getUser(userId) == null) {
-            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
-        }
-        if (vlogService.getVlog(vlogId) == null) {
+        if (!checkVlogIsExist(vlogId)) {
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
         }
         vlogService.changeMyVlogToPublic(userId, vlogId);
@@ -132,16 +134,10 @@ public class VlogController extends BaseInfoProperties {
 
     @PostMapping("like")
     public GraceJSONResult like(@RequestParam String userId, @RequestParam String vlogerId, @RequestParam String vlogId) {
-        if(checkStrsIsNotValid(userId, vlogerId, vlogId)){
+        if(!checkUserIsExist(userId) || !checkUserIsExist(vlogerId)){
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
         }
-        if (userService.getUser(userId) == null) {
-            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
-        }
-        if (userService.getUser(vlogerId) == null) {
-            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
-        }
-        if (vlogService.getVlog(vlogId) == null) {
+        if (!checkVlogIsExist(vlogId)) {
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
         }
         vlogService.userLikeVlog(userId, vlogerId, vlogId);
@@ -150,40 +146,49 @@ public class VlogController extends BaseInfoProperties {
 
     @PostMapping("unlike")
     public GraceJSONResult unlike(@RequestParam String userId, @RequestParam String vlogerId, @RequestParam String vlogId) {
-        if(checkStrsIsNotValid(userId, vlogerId, vlogId)){
+        if(!checkUserIsExist(userId) || !checkUserIsExist(vlogerId)){
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
         }
-        if (userService.getUser(userId) == null) {
-            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
-        }
-        if (userService.getUser(vlogerId) == null) {
-            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
-        }
-        if (vlogService.getVlog(vlogId) == null) {
+        if (!checkVlogIsExist(vlogId)) {
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
         }
         vlogService.userUnlikeVlog(userId, vlogerId, vlogId);
         return GraceJSONResult.ok();
     }
 
-    @GetMapping("myLikedList")
-    public GraceJSONResult myLikedList(@RequestParam String userId,
-                                         @RequestParam Integer page,
-                                         @RequestParam Integer pageSize) {
+
+
+    @GetMapping("followList")
+    public GraceJSONResult getMyFollowList(@RequestParam String myId,
+                                       @RequestParam Integer page,
+                                       @RequestParam Integer pageSize) {
         if (page == null) {
             page = COMMON_START_PAGE;
         }
         if (pageSize == null) {
             pageSize = COMMON_PAGE_SIZE;
         }
-        if(StringUtils.isBlank(userId)){
+        if(!checkUserIsExist(myId)){
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
         }
-        if (userService.getUser(userId) == null) {
-            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
-        }
-        PagedGridResult pagedGridResult = vlogService.queryMyLikedList(userId, page, pageSize);
+        PagedGridResult pagedGridResult = vlogService.queryMyFollowList(myId, page, pageSize, YesOrNo.NO.type);
         return GraceJSONResult.ok(pagedGridResult);
     }
 
+    @GetMapping("friendList")
+    public GraceJSONResult getMyFriendList(@RequestParam String myId,
+                                           @RequestParam Integer page,
+                                           @RequestParam Integer pageSize) {
+        if (page == null) {
+            page = COMMON_START_PAGE;
+        }
+        if (pageSize == null) {
+            pageSize = COMMON_PAGE_SIZE;
+        }
+        if(!checkUserIsExist(myId)){
+            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
+        }
+        PagedGridResult pagedGridResult = vlogService.queryMyFollowList(myId, page, pageSize, YesOrNo.YES.type);
+        return GraceJSONResult.ok(pagedGridResult);
+    }
 }

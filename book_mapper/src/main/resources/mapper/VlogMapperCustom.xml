@@ -3,7 +3,7 @@
 <mapper namespace="com.bao.mapper.VlogMapperCustomer">
     <select id="getIndexVlogVOList" parameterType="map" resultType="com.bao.vo.IndexVlogVO">
         select
-           v.id              as vlogId,
+           v.id              as id,
            v.vloger_id       as vlogerId,
            u.face            as vlogerFace,
            u.nickname        as vlogerName,
@@ -31,9 +31,45 @@
         desc
     </select>
 
+    <select id="queryMyFollowList" parameterType="map" resultType="com.bao.vo.IndexVlogVO">
+        select
+        v.id              as id,
+        v.vloger_id       as vlogerId,
+        u.face            as vlogerFace,
+        u.nickname        as vlogerName,
+        v.title           as content,
+        v.url             as url,
+        v.cover           as cover,
+        v.width           as width,
+        v.height          as height,
+        v.like_counts     as likeCounts,
+        v.comments_counts as commentsCounts,
+        v.is_private      as isPrivate
+        from
+            vlog v
+        left join
+            fans f
+        on
+            v.vloger_id = f.vloger_id
+        left join
+            users u
+        on
+            v.vloger_id = u.id
+        where
+                v.is_private = 0
+            and
+                f.fan_id = #{paramMap.myId}
+            <if test="paramMap.isFriend == 1">
+                and f.is_fan_friend_of_mine = 1
+            </if>
+        order by
+        v.created_time
+        desc
+    </select>
+
     <select id="getIndexVlogVODetail" parameterType="map" resultType="com.bao.vo.IndexVlogVO">
         select
-            v.id              as vlogId,
+            v.id              as id,
             v.vloger_id       as vlogerId,
             u.face            as vlogerFace,
             u.nickname        as vlogerName,
@@ -57,7 +93,7 @@
 
     <select id="queryMyLikedList" parameterType="map" resultType="com.bao.vo.IndexVlogVO">
         select
-            v.id              as vlogId,
+            v.id              as id,
             v.vloger_id       as vlogerId,
             u.face            as vlogerFace,
             u.nickname        as vlogerName,

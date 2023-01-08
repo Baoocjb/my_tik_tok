@@ -12,4 +12,5 @@ public interface VlogMapperCustomer {
     List<IndexVlogVO> getIndexVlogVOList(@Param("paramMap") Map<String, Object> map);
     List<IndexVlogVO> getIndexVlogVODetail(@Param("paramMap") Map<String, Object> map);
     List<IndexVlogVO> queryMyLikedList(@Param("paramMap") Map<String, Object> map);
+    List<IndexVlogVO> queryMyFollowList(@Param("paramMap") Map<String, Object> map);
 }

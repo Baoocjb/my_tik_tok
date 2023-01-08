@@ -1,5 +1,7 @@
 package com.bao.service.base;
 
+import com.bao.service.UserService;
+import com.bao.service.VlogService;
 import com.bao.utils.PagedGridResult;
 import com.bao.utils.RedisOperator;
 import com.github.pagehelper.PageInfo;
@@ -9,6 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 public class BaseInfoProperties {
+
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private VlogService vlogService;
 
     @Autowired
     public RedisOperator redis;
@@ -67,5 +74,35 @@ public class BaseInfoProperties {
             }
         }
         return false;
+    }
+
+    /**
+     * 校验user是否存在
+     * @param userId
+     * @return
+     */
+    public boolean checkUserIsExist(String userId){
+        if(StringUtils.isBlank(userId)){
+            return false;
+        }
+        if(userService.getUser(userId) == null){
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 校验user是否存在
+     * @param vlogId
+     * @return
+     */
+    public boolean checkVlogIsExist(String vlogId){
+        if(StringUtils.isBlank(vlogId)){
+            return false;
+        }
+        if(vlogService.getVlog(vlogId) == null){
+            return false;
+        }
+        return true;
     }
 }
