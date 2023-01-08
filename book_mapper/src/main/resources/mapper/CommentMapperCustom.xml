@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bao.mapper.CommentMapperCustom">
+    <select id="queryFirstLevelComments" parameterType="map" resultType="com.bao.vo.CommentVO">
+        select
+            c.id as commentId,
+            u.id as vlogerId,
+            c.father_comment_id as fatherCommentId,
+            c.vlog_id as vlogId,
+            u.id as commentUserId,
+            u.nickname as commentUserNickname,
+            u.face as commentUserFace,
+            c.content as content,
+            c.like_counts as likeCounts,
+            c.create_time as createTime
+        from
+            `comment` c
+        left join
+            users u
+        on
+            c.comment_user_id = u.id
+        where
+            c.vlog_id = #{paramMap.vlogId}
+        order by
+            c.like_counts,
+            c.create_time
+        desc
+    </select>
+
+    <select id="queryTheFatherComment" parameterType="string" resultType="com.bao.vo.CommentVO">
+        select
+            u.nickname as replyedUserNickname
+        from
+            `comment` c
+                left join
+            users u
+            on
+                c.comment_user_id = u.id
+        where
+            c.id = #{fatherCommentId}
+    </select>
+</mapper>

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public interface VlogMapperCustomer {
+public interface VlogMapperCustom {
     List<IndexVlogVO> getIndexVlogVOList(@Param("paramMap") Map<String, Object> map);
     List<IndexVlogVO> getIndexVlogVODetail(@Param("paramMap") Map<String, Object> map);
     List<IndexVlogVO> queryMyLikedList(@Param("paramMap") Map<String, Object> map);

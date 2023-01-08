@@ -1,5 +1,6 @@
 package com.bao.service.base;
 
+import com.bao.service.CommentService;
 import com.bao.service.UserService;
 import com.bao.service.VlogService;
 import com.bao.utils.PagedGridResult;
@@ -16,6 +17,8 @@ public class BaseInfoProperties {
     private UserService userService;
     @Autowired
     private VlogService vlogService;
+    @Autowired
+    private CommentService commentService;
 
     @Autowired
     public RedisOperator redis;
@@ -86,6 +89,21 @@ public class BaseInfoProperties {
             return false;
         }
         if(userService.getUser(userId) == null){
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 校验评论是否存在
+     * @param commentId
+     * @return
+     */
+    public boolean checkCommentIsExist(String commentId){
+        if(StringUtils.isBlank(commentId)){
+            return false;
+        }
+        if(commentService.getComment(commentId) == null){
             return false;
         }
         return true;

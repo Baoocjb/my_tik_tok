@@ -3,10 +3,9 @@ package com.bao.service.impl;
 import com.bao.bo.VlogBO;
 import com.bao.enums.YesOrNo;
 import com.bao.exception.GraceException;
-import com.bao.exception.MyCustomException;
 import com.bao.mapper.MyLikedVlogMapper;
 import com.bao.mapper.VlogMapper;
-import com.bao.mapper.VlogMapperCustomer;
+import com.bao.mapper.VlogMapperCustom;
 import com.bao.pojo.MyLikedVlog;
 import com.bao.pojo.Vlog;
 import com.bao.result.ResponseStatusEnum;
@@ -15,7 +14,6 @@ import com.bao.service.VlogService;
 import com.bao.service.base.BaseInfoProperties;
 import com.bao.utils.PagedGridResult;
 import com.bao.vo.IndexVlogVO;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.n3r.idworker.Sid;
@@ -35,7 +33,7 @@ public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
     @Autowired
     private VlogMapper vlogMapper;
     @Autowired
-    private VlogMapperCustomer vlogMapperCustomer;
+    private VlogMapperCustom vlogMapperCustom;
     @Autowired
     private FansService fansService;
     @Autowired
@@ -66,7 +64,7 @@ public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
         }
         // 开始分页
         PageHelper.startPage(page, pageSize);
-        List<IndexVlogVO> indexVlogVOList = vlogMapperCustomer.getIndexVlogVOList(map);
+        List<IndexVlogVO> indexVlogVOList = vlogMapperCustom.getIndexVlogVOList(map);
         if (indexVlogVOList != null) {
             // 对 关注/点赞 情况进行设置
             indexVlogVOList.forEach(indexVlogVO -> {
@@ -91,6 +89,12 @@ public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
         // 设置点赞数量
         indexVlogVO.setLikeCounts(queryVlogBeLikedCounts(indexVlogVO.getId()));
         indexVlogVO.setLikeCounts(queryVlogBeLikedCounts(indexVlogVO.getId()));
+        // 设置评论数量
+        String commentCountStr = redis.get(REDIS_VLOG_COMMENT_COUNTS + ":" + indexVlogVO.getId());
+        if(StringUtils.isBlank(commentCountStr)){
+            commentCountStr = "0";
+        }
+        indexVlogVO.setCommentsCounts(Integer.parseInt(commentCountStr));
         return indexVlogVO;
     }
 
@@ -120,7 +124,7 @@ public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
     public IndexVlogVO getIndexVlogVODetailById(String userId, String vlogId) {
         Map<String, Object> map = new HashMap<>();
         map.put("vlogId", vlogId);
-        List<IndexVlogVO> indexVlogVODetail = vlogMapperCustomer.getIndexVlogVODetail(map);
+        List<IndexVlogVO> indexVlogVODetail = vlogMapperCustom.getIndexVlogVODetail(map);
         if (indexVlogVODetail != null && indexVlogVODetail.size() == 1) {
             return setterIndexVlogVO(indexVlogVODetail.get(0), userId);
         }
@@ -145,7 +149,7 @@ public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
         PageHelper.startPage(page, pageSize);
         Map<String, Object> map = new HashMap<>();
         map.put("myId", userId);
-        List<IndexVlogVO> list = vlogMapperCustomer.queryMyLikedList(map);
+        List<IndexVlogVO> list = vlogMapperCustom.queryMyLikedList(map);
         return setterPagedGrid(list, page);
     }
 
@@ -155,7 +159,7 @@ public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
         Map<String, Object> map = new HashMap<>();
         map.put("myId", myId);
         map.put("isFriend", isFriend);
-        List<IndexVlogVO> list = vlogMapperCustomer.queryMyFollowList(map);
+        List<IndexVlogVO> list = vlogMapperCustom.queryMyFollowList(map);
         if (list != null) {
             // 对 关注/点赞 情况进行设置
             list.forEach(indexVlogVO -> {

@@ -4,16 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35297107-d01b-4092-969c-244040c39e3e" name="Default Changelist" comment="second commit">
+    <list default="true" id="35297107-d01b-4092-969c-244040c39e3e" name="Default Changelist" comment="视频点赞模块完成">
+      <change afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/CommentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_mapper/src/main/java/com/bao/mapper/CommentMapperCustom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_mapper/src/main/resources/mapper/CommentMapperCustom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_model/src/main/java/com/bao/bo/CommentBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/CommentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/CommentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/VlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/VlogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/target/classes/com/bao/controller/VlogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/classes/com/bao/controller/VlogController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_common/target/classes/com/bao/result/ResponseStatusEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_common/target/classes/com/bao/result/ResponseStatusEnum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/src/main/java/com/bao/mapper/CommentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/src/main/java/com/bao/mapper/CommentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/src/main/java/com/bao/mapper/VlogMapperCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/src/main/java/com/bao/mapper/VlogMapperCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/src/main/resources/mapper/VlogMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/src/main/resources/mapper/VlogMapperCustom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/target/classes/com/bao/mapper/CommentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/target/classes/com/bao/mapper/CommentMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/target/classes/com/bao/mapper/VlogMapperCustomer.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/book_mapper/target/classes/mapper/VlogMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/target/classes/mapper/VlogMapperCustom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_model/target/classes/com/bao/vo/IndexVlogVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_model/target/classes/com/bao/vo/IndexVlogVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/VlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/VlogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/base/BaseInfoProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/base/BaseInfoProperties.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/VlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/VlogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/VlogService.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/VlogService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/base/BaseInfoProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/base/BaseInfoProperties.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/impl/VlogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/impl/VlogServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,8 +56,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/UserInfoController.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/book_mapper/src/main/java/com/bao/mapper/VlogMapperCustomer.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/book_mapper/src/main/java/com/bao/mapper/VlogMapperCustom.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/book_mapper/src/main/resources/mapper/VlogMapperCustom.xml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/book_mapper/src/main/resources/mapper/CommentMapperCustom.xml" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/book_mapper/src/main/resources/mapper/FansMapperCustom.xml" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/VlogController.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/VlogServiceImpl.java" root0="SKIP_INSPECTION" />
@@ -68,7 +76,9 @@
     <option name="jreName" value="1.8" />
   </component>
   <component name="ProjectId" id="2JjAuPHAmzIPZ8wWgDP48g64my4" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -81,7 +91,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/book_mapper/src/main/resources/mapper" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -89,8 +99,8 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.2705078" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
@@ -111,11 +121,11 @@
       <recent name="D:\my_workspace\bao_red_book" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.bao.interceptor" />
-      <recent name="com.bao.mapper" />
-      <recent name="com.bao.vo" />
-      <recent name="com.bao.service.impl" />
       <recent name="com.bao.controller" />
+      <recent name="com.bao.bo" />
+      <recent name="com.bao.service.impl" />
+      <recent name="com.bao.service" />
+      <recent name="com.bao.mapper" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.Application">
@@ -171,6 +181,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="book_api" />
       <extension name="coverage">
@@ -213,7 +234,7 @@
       <workItem from="1672906361967" duration="40357000" />
       <workItem from="1673093438522" duration="17250000" />
       <workItem from="1673162042720" duration="6727000" />
-      <workItem from="1673172915605" duration="1497000" />
+      <workItem from="1673172915605" duration="12039000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1673111268837</created>
@@ -229,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673169564987</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="视频点赞模块完成">
+      <created>1673178784795</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1673178784795</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,7 +278,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="second commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="second commit" />
+    <MESSAGE value="视频点赞模块完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="视频点赞模块完成" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
