@@ -156,7 +156,14 @@ public class VlogController extends BaseInfoProperties {
         return GraceJSONResult.ok();
     }
 
-
+    @PostMapping("totalLikedCounts")
+    public GraceJSONResult totalLikedCounts(@RequestParam String vlogId){
+        if (!checkVlogIsExist(vlogId)) {
+            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ARGS_ERROR);
+        }
+        Integer totalLikedCounts = vlogService.getTotalLikedCounts(vlogId);
+        return GraceJSONResult.ok(totalLikedCounts);
+    }
 
     @GetMapping("followList")
     public GraceJSONResult getMyFollowList(@RequestParam String myId,

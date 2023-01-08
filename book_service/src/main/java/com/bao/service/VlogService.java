@@ -82,4 +82,10 @@ public interface VlogService {
      */
     PagedGridResult queryMyFollowList(String myId, Integer page, Integer pageSize, Integer isFriend);
 
+    /**
+     * 查询视频点赞总数
+     * @param vlogId
+     * @return
+     */
+    Integer getTotalLikedCounts(String vlogId);
 }

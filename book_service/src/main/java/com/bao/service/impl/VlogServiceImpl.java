@@ -166,6 +166,15 @@ public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
     }
 
     @Override
+    public Integer getTotalLikedCounts(String vlogId) {
+        String totalLikedCounts = redis.get(REDIS_VLOG_BE_LIKED_COUNTS + ":" + vlogId);
+        if(StringUtils.isBlank(totalLikedCounts)){
+            totalLikedCounts = "0";
+        }
+        return Integer.parseInt(totalLikedCounts);
+    }
+
+    @Override
     @Transactional
     public void changeMyVlogToPrivate(String userId, String vlogId) {
         Example example = new Example(Vlog.class);
