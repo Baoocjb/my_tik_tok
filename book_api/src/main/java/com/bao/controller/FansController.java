@@ -32,10 +32,7 @@ public class FansController extends BaseInfoProperties {
         }
 
         fansService.doFollow(myId, vlogerId);
-        // 此时 redis 要放在 controller 中, 避免 service 事务回滚但是 redis 操作不能取消
-        redis.increment(REDIS_MY_FOLLOWS_COUNTS + ":" + myId, 1);
-        redis.increment(REDIS_MY_FANS_COUNTS + ":" + vlogerId, 1);
-        redis.set(REDIS_FANS_AND_VLOGGER_RELATIONSHIP + ":" + myId + ":" + vlogerId, "1");
+
         return GraceJSONResult.ok();
     }
 

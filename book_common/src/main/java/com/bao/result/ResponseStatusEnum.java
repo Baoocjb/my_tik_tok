@@ -36,6 +36,7 @@ public enum ResponseStatusEnum {
     USER_STATUS_ERROR(515,false,"用户状态参数出错！"),
     USER_NOT_EXIST_ERROR(516,false,"用户不存在！"),
     VLOG_UPDATED_ERROR(517,false,"视频修改失败！"),
+    COMMENT_UNLAWFUL_ERROR(518,false,"评论存在敏感词！"),
 
     // 自定义系统级别异常 54x
     SYSTEM_INDEX_OUT_OF_BOUNDS(541, false, "系统错误，数组越界！"),

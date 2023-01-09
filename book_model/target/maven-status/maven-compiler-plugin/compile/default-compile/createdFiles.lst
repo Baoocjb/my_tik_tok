@@ -1,8 +1,8 @@
+com\bao\pojo\Fans.class
+com\bao\pojo\Users.class
 com\bao\pojo\MyLikedVlog.class
 com\bao\pojo\Vlog.class
 com\bao\pojo\Comment.class
 com\bao\vo\UsersVO.class
 com\bao\bo\UpdatedUserBO.class
-com\bao\pojo\Fans.class
-com\bao\pojo\Users.class
 com\bao\bo\LoginRegisterBO.class

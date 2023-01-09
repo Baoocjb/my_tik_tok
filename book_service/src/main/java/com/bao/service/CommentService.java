@@ -38,7 +38,7 @@ public interface CommentService {
      * @param userId
      * @param commentId
      */
-    void userunLikeComment(String userId, String commentId);
+    void userUnlikeComment(String userId, String commentId);
 
     /**
      * 查询评论列表
@@ -49,4 +49,12 @@ public interface CommentService {
      * @return
      */
     PagedGridResult getCommentList(String vlogId, String userId, Integer page, Integer pageSize);
+
+    /**
+     * 删除评论
+     * @param commentUserId
+     * @param commentId
+     * @param vlogId
+     */
+    void userDelComment(String commentUserId, String commentId, String vlogId);
 }

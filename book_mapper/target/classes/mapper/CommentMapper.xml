@@ -13,6 +13,7 @@
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="like_counts" jdbcType="INTEGER" property="likeCounts" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="is_valid" jdbcType="INTEGER" property="isValid" />
   </resultMap>
 
 </mapper>

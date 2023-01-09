@@ -1,13 +1,20 @@
 package com.bao.service.impl;
 
 import com.bao.bo.CommentBO;
+import com.bao.enums.MessageEnum;
 import com.bao.enums.YesOrNo;
+import com.bao.exception.GraceException;
 import com.bao.mapper.CommentMapper;
 import com.bao.mapper.CommentMapperCustom;
 import com.bao.pojo.Comment;
+import com.bao.pojo.Vlog;
+import com.bao.result.ResponseStatusEnum;
 import com.bao.service.CommentService;
+import com.bao.service.MsgService;
+import com.bao.service.VlogService;
 import com.bao.service.base.BaseInfoProperties;
 import com.bao.utils.PagedGridResult;
+import com.bao.utils.SensitiveFilterUtil;
 import com.bao.vo.CommentVO;
 import com.github.pagehelper.PageHelper;
 import org.apache.commons.lang3.StringUtils;
@@ -29,6 +36,12 @@ public class CommentServiceImpl extends BaseInfoProperties implements CommentSer
     @Autowired
     private CommentMapper commentMapper;
     @Autowired
+    private MsgService msgService;
+    @Autowired
+    private VlogService vlogService;
+    @Autowired
+    private SensitiveFilterUtil sensitiveFilterUtil;
+    @Autowired
     private Sid sid;
 
     @Override
@@ -38,13 +51,19 @@ public class CommentServiceImpl extends BaseInfoProperties implements CommentSer
         comment.setId(sid.nextShort());
         comment.setFatherCommentId(commentBO.getFatherCommentId());
 
+        // 设置是否包含敏感词
+        if(!sensitiveFilterUtil.isLawful(commentBO.getContent())){
+            GraceException.display(ResponseStatusEnum.COMMENT_UNLAWFUL_ERROR);
+        }
         comment.setContent(commentBO.getContent());
+
         comment.setCommentUserId(commentBO.getCommentUserId());
         comment.setCreateTime(new Date());
 
         comment.setVlogId(commentBO.getVlogId());
         comment.setVlogerId(commentBO.getVlogerId());
         comment.setLikeCounts(0);
+        comment.setIsValid(YesOrNo.YES.type);
         commentMapper.insert(comment);
 
         CommentVO commentVO = new CommentVO();
@@ -52,6 +71,27 @@ public class CommentServiceImpl extends BaseInfoProperties implements CommentSer
 
         // 操作 redis
         redis.increment(REDIS_VLOG_COMMENT_COUNTS + ":" + commentBO.getVlogId(), 1);
+
+        // 系统通知: 评论与回复
+        Vlog vlog = vlogService.getVlog(comment.getVlogId());
+        Map<String, Object> msgContent = new HashMap<>();
+        msgContent.put("vlogId", vlog.getId());
+        msgContent.put("vlogCover", vlog.getCover());
+        msgContent.put("commentContent", comment.getContent());
+
+        String toUserId;
+        Integer type;
+        if(StringUtils.isNotBlank(comment.getFatherCommentId()) && !"0".equalsIgnoreCase(comment.getFatherCommentId())){
+            // 说明是对 评论视频的人 的回复
+            CommentVO fatherCommentVO = commentMapperCustom.queryTheFatherComment(comment.getFatherCommentId());
+            toUserId = fatherCommentVO.getCommentUserId();
+            type = MessageEnum.REPLY_YOU.type;
+        }else{
+            // 说明是对视频博主的评论
+            toUserId = comment.getVlogerId();
+            type = MessageEnum.COMMENT_VLOG.type;
+        }
+        msgService.createMsg(comment.getCommentUserId(), toUserId, type, msgContent);
         return commentVO;
     }
 
@@ -63,6 +103,14 @@ public class CommentServiceImpl extends BaseInfoProperties implements CommentSer
 
         // TODO 添加定时任务, 刷入数据库
         // https://cloud.tencent.com/developer/article/1536852
+
+        // 系统通知: 点赞评论
+        Comment comment = getComment(commentId);
+        Map<String, Object> msgContent = new HashMap<>();
+        Vlog vlog = vlogService.getVlog(comment.getVlogId());
+        msgContent.put("vlogId", vlog.getId());
+        msgContent.put("vlogCover", vlog.getCover());
+        msgService.createMsg(userId, comment.getCommentUserId(), MessageEnum.LIKE_COMMENT.type, msgContent);
     }
 
     @Override
@@ -80,7 +128,7 @@ public class CommentServiceImpl extends BaseInfoProperties implements CommentSer
     }
 
     @Override
-    public void userunLikeComment(String userId, String commentId) {
+    public void userUnlikeComment(String userId, String commentId) {
         redis.del(REDIS_USER_LIKE_COMMENT + ":" + userId + ":" + commentId);
         redis.decrementHash(REDIS_VLOG_COMMENT_LIKED_COUNTS, commentId, 1);
     }
@@ -94,7 +142,7 @@ public class CommentServiceImpl extends BaseInfoProperties implements CommentSer
         List<CommentVO> list = commentMapperCustom.queryFirstLevelComments(map);
         if (list != null) {
             for(CommentVO cv : list){
-                // 有回复别人
+                // 有回复的目标
                 if(!"0".equalsIgnoreCase(cv.getFatherCommentId())){
                     CommentVO commentVO = commentMapperCustom.queryTheFatherComment(cv.getFatherCommentId());
                     // 设置被回复者的nickname
@@ -110,6 +158,16 @@ public class CommentServiceImpl extends BaseInfoProperties implements CommentSer
             }
         }
         return setterPagedGrid(list, page);
+    }
+
+    @Override
+    @Transactional
+    public void userDelComment(String commentUserId, String commentId, String vlogId) {
+        Comment comment = new Comment();
+        comment.setIsValid(0);
+        comment.setId(commentId);
+        commentMapper.updateByPrimaryKeySelective(comment);
+        redis.decrement(REDIS_VLOG_COMMENT_COUNTS + ":" + vlogId, 1);
     }
 
     /**

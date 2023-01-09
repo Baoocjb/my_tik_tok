@@ -1,6 +1,7 @@
 package com.bao.service.impl;
 
 import com.bao.bo.VlogBO;
+import com.bao.enums.MessageEnum;
 import com.bao.enums.YesOrNo;
 import com.bao.exception.GraceException;
 import com.bao.mapper.MyLikedVlogMapper;
@@ -10,6 +11,7 @@ import com.bao.pojo.MyLikedVlog;
 import com.bao.pojo.Vlog;
 import com.bao.result.ResponseStatusEnum;
 import com.bao.service.FansService;
+import com.bao.service.MsgService;
 import com.bao.service.VlogService;
 import com.bao.service.base.BaseInfoProperties;
 import com.bao.utils.PagedGridResult;
@@ -23,10 +25,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
@@ -38,6 +37,8 @@ public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
     private FansService fansService;
     @Autowired
     private MyLikedVlogMapper myLikedVlogMapper;
+    @Autowired
+    private MsgService msgService;
     @Autowired
     private Sid sid;
 
@@ -223,6 +224,14 @@ public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
         redis.increment(REDIS_VLOG_BE_LIKED_COUNTS + ":" + vlogId, 1);
         redis.increment(REDIS_VLOGER_BE_LIKED_COUNTS + ":" + vlogerId, 1);
         redis.set(REDIS_USER_LIKE_VLOG + ":" + userId + ":" + vlogId, "1");
+
+        // 系统通知: 点赞短视频
+        Vlog vlog = this.getVlog(vlogId);
+        Map<String, Object> msgContent = new HashMap<>();
+        msgContent.put("vlogCover", vlog.getCover());
+        msgContent.put("vlogId", vlog.getId());
+        msgService.createMsg(userId, vlogerId, MessageEnum.LIKE_VLOG.type, msgContent);
+
     }
 
     @Override

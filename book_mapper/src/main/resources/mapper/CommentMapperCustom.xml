@@ -21,15 +21,17 @@
             c.comment_user_id = u.id
         where
             c.vlog_id = #{paramMap.vlogId}
+            and
+            c.is_valid = 1
         order by
-            c.like_counts,
-            c.create_time
-        desc
+            c.like_counts desc,
+            c.create_time desc
     </select>
 
     <select id="queryTheFatherComment" parameterType="string" resultType="com.bao.vo.CommentVO">
         select
-            u.nickname as replyedUserNickname
+            u.nickname as replyedUserNickname,
+            u.id as commentUserId
         from
             `comment` c
                 left join

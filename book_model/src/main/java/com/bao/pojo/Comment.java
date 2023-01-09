@@ -50,6 +50,17 @@ public class Comment implements Serializable {
     @Column(name = "create_time")
     private Date createTime;
 
+    @Column(name = "is_valid")
+    private Integer isValid;
+
+    public Integer getIsValid() {
+        return isValid;
+    }
+
+    public void setIsValid(Integer isValid) {
+        this.isValid = isValid;
+    }
+
     private static final long serialVersionUID = 1L;
 
     /**

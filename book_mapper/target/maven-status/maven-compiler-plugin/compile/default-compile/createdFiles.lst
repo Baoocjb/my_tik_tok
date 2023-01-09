@@ -4,3 +4,4 @@ com\bao\my\mapper\MyMapper.class
 com\bao\mapper\UsersMapper.class
 com\bao\mapper\VlogMapper.class
 com\bao\mapper\CommentMapper.class
+com\bao\repository\MsgRepository.class

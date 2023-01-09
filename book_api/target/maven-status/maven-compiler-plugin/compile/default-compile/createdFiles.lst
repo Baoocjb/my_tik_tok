@@ -1,5 +1,4 @@
 com\bao\config\WebMvcConfig.class
-com\bao\controller\BaseInfoProperties.class
 com\bao\controller\FileController.class
 com\bao\Application.class
 com\bao\interceptor\PassportInterceptor.class

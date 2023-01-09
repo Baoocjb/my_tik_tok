@@ -40,7 +40,18 @@ public class CommentController extends BaseInfoProperties {
         if(!checkUserIsExist(userId) || !checkCommentIsExist(commentId)){
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ERROR);
         }
-        commentService.userunLikeComment(userId, commentId);
+        commentService.userUnlikeComment(userId, commentId);
+        return GraceJSONResult.ok();
+    }
+
+    @DeleteMapping("delete")
+    public GraceJSONResult delete(@RequestParam String commentUserId,
+                                  @RequestParam String commentId,
+                                  @RequestParam String vlogId){
+        if(!checkUserIsExist(commentUserId) || !checkCommentIsExist(commentId) || !checkVlogIsExist(vlogId)){
+            return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ERROR);
+        }
+        commentService.userDelComment(commentUserId, commentId, vlogId);
         return GraceJSONResult.ok();
     }
 
@@ -64,7 +75,7 @@ public class CommentController extends BaseInfoProperties {
         if (pageSize == null) {
             pageSize = COMMON_PAGE_SIZE;
         }
-        if(!checkUserIsExist(userId) || !checkVlogIsExist(vlogId)){
+        if(!checkVlogIsExist(vlogId)){
             return GraceJSONResult.errorCustom(ResponseStatusEnum.SYSTEM_ERROR);
         }
         PagedGridResult pagedGridResult = commentService.getCommentList(vlogId, userId, page, pageSize);

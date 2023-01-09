@@ -1,10 +1,12 @@
 package com.bao.service.impl;
 
+import com.bao.enums.MessageEnum;
 import com.bao.enums.YesOrNo;
 import com.bao.mapper.FansMapper;
 import com.bao.mapper.FansMapperCustom;
 import com.bao.pojo.Fans;
 import com.bao.service.FansService;
+import com.bao.service.MsgService;
 import com.bao.service.base.BaseInfoProperties;
 import com.bao.utils.PagedGridResult;
 import com.bao.vo.FansVO;
@@ -28,6 +30,8 @@ public class FansServiceImpl extends BaseInfoProperties implements FansService {
     @Autowired
     private FansMapperCustom fansMapperCustom;
     @Autowired
+    private MsgService msgService;
+    @Autowired
     private Sid sid;
 
     @Override
@@ -48,6 +52,17 @@ public class FansServiceImpl extends BaseInfoProperties implements FansService {
             fans.setIsFanFriendOfMine(YesOrNo.NO.type);
         }
         fansMapper.insert(fans);
+
+        // 此时 redis 要放在 controller 中/ 或者是 mysql 操作之后, 避免 service 事务回滚但是 redis 操作不能取消
+        redis.increment(REDIS_MY_FOLLOWS_COUNTS + ":" + myId, 1);
+        redis.increment(REDIS_MY_FANS_COUNTS + ":" + vlogerId, 1);
+        redis.set(REDIS_FANS_AND_VLOGGER_RELATIONSHIP + ":" + myId + ":" + vlogerId, "1");
+
+        // 系统通知: 关注
+        Map<String, Object> msgContent = new HashMap<>();
+
+        msgContent.put("isFriend", doIBeFollowed(myId, vlogerId));
+        msgService.createMsg(myId, vlogerId, MessageEnum.FOLLOW_YOU.type, msgContent);
     }
 
     @Override
@@ -99,6 +114,20 @@ public class FansServiceImpl extends BaseInfoProperties implements FansService {
             });
         }
         return setterPagedGrid(list, page);
+    }
+
+    /**
+     * 查询我是否被关注
+     * @param myId
+     * @param vlogerId
+     * @return
+     */
+    private boolean doIBeFollowed(String myId, String vlogerId){
+        String haveRelationshipStr = redis.get(REDIS_FANS_AND_VLOGGER_RELATIONSHIP + ":" + vlogerId + ":" + myId);
+        if(StringUtils.isBlank(haveRelationshipStr) || "0".equalsIgnoreCase(haveRelationshipStr)){
+            return false;
+        }
+        return "1".equalsIgnoreCase(haveRelationshipStr);
     }
 
     /**
