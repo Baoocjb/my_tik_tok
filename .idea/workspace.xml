@@ -5,47 +5,96 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35297107-d01b-4092-969c-244040c39e3e" name="Default Changelist" comment="系统通知模块完成">
-      <change afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/MsgController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_mapper/src/main/java/com/bao/repository/MsgRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_model/src/main/java/com/bao/mo/MessageMO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/MsgService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/MsgServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/config/QuartConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/TestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_common/src/main/java/com/bao/utils/JsonUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_common/src/main/java/com/bao/utils/RedisDataSoureceTransaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/base/RabbitMQConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/customer/RabbitCustomer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/quartz/CommentLikeCountRefreshJob.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/quartz/VlogLikeCountRefreshJob.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/FansController.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/FansController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/target/book_api.jar" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/book_api.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/PassportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/PassportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/interceptor/PassportInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/interceptor/PassportInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_api/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_api/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/resources/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_api/target/book_api.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/book_api/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/classes/application-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_api/target/classes/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/classes/application-prod.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/target/classes/com/bao/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/classes/com/bao/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/target/classes/com/bao/controller/FansController.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/classes/com/bao/controller/FansController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_api/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_api/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_api/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/book_common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_common/src/main/java/com/bao/enums/MessageEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_common/src/main/java/com/bao/enums/MessageEnum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_common/src/main/java/com/bao/result/ResponseStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_common/src/main/java/com/bao/result/ResponseStatusEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_common/target/book_common.jar" beforeDir="false" afterPath="$PROJECT_DIR$/book_common/target/book_common.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_common/target/classes/com/bao/result/ResponseStatusEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_common/target/classes/com/bao/result/ResponseStatusEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/book_common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_mapper/src/main/resources/mapper/CommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/src/main/resources/mapper/CommentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_common/src/main/java/com/bao/utils/RedisOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_common/src/main/java/com/bao/utils/RedisOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_common/target/book_common.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_common/target/classes/com/bao/enums/MessageEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_common/target/classes/com/bao/enums/MessageEnum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_common/target/classes/com/bao/utils/RedisOperator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_common/target/classes/com/bao/utils/RedisOperator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_common/target/classes/com/bao/utils/RedisOperator.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_common/target/classes/com/bao/utils/RedisOperator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_common/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_common/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_common/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/src/main/java/com/bao/mapper/CommentMapperCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/src/main/java/com/bao/mapper/CommentMapperCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/src/main/java/com/bao/mapper/VlogMapperCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/src/main/java/com/bao/mapper/VlogMapperCustom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_mapper/src/main/resources/mapper/CommentMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/src/main/resources/mapper/CommentMapperCustom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_mapper/target/book_mapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/target/book_mapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_mapper/target/classes/mapper/CommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/target/classes/mapper/CommentMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_model/src/main/java/com/bao/pojo/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_model/src/main/java/com/bao/pojo/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_model/target/book_model.jar" beforeDir="false" afterPath="$PROJECT_DIR$/book_model/target/book_model.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_model/target/classes/com/bao/pojo/Comment.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_model/target/classes/com/bao/pojo/Comment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_model/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/book_model/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_model/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/book_model/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/src/main/resources/mapper/VlogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/src/main/resources/mapper/VlogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/src/main/resources/mapper/VlogMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/src/main/resources/mapper/VlogMapperCustom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/target/book_mapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/target/classes/mapper/VlogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/target/classes/mapper/VlogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/target/classes/mapper/VlogMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/target/classes/mapper/VlogMapperCustom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_mapper/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_model/target/book_model.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_model/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_model/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_model/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_model/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_model/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/base/BaseInfoProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/base/BaseInfoProperties.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/CommentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/FansServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/FansServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/VlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/VlogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/target/book_service.jar" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/target/book_service.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_service/target/book_service.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/base/BaseInfoProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/base/BaseInfoProperties.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/impl/FansServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/impl/FansServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/impl/VlogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/impl/VlogServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/mybatis-generator-database-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/mybatis-generator-database-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_service/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/com/bao/mapper/CommentMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/com/bao/mapper/FansMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/com/bao/mapper/MyLikedVlogMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/com/bao/mapper/UsersMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/com/bao/mapper/VlogMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/com/bao/my/mapper/MyMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/com/bao/pojo/Comment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/com/bao/pojo/Fans.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/com/bao/pojo/MyLikedVlog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/com/bao/pojo/Users.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/com/bao/pojo/Vlog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/com/example/thrd/mybatis/util/AdminGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/log4j.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/mapper/CommentMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/mapper/FansMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/mapper/MyLikedVlogMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/mapper/UsersMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/classes/mapper/VlogMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis-generator-database-mysql8/target/mybatis-generator-database-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,8 +110,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -115,7 +164,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/book_mapper/src/main/resources/mapper" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/book_common/src/main/java/com/bao/utils" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -127,17 +176,17 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="Ignore Files Support" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\my_workspace\bao_red_book\book_common\src\main\java\com\bao\utils" />
       <recent name="D:\my_workspace\bao_red_book\book_mapper\src\main\resources\mapper" />
       <recent name="D:\my_workspace\bao_red_book\book_common\src\main\resources" />
       <recent name="D:\my_workspace\bao_red_book\book_model\src\main\java\com\bao\pojo" />
-      <recent name="D:\my_workspace\bao_red_book\book_common\src\main\java\com\bao\utils" />
       <recent name="D:\my_workspace\bao_red_book\book_common\src\main\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -145,11 +194,11 @@
       <recent name="D:\my_workspace\bao_red_book" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.bao.service.quartz" />
+      <recent name="com.bao.config" />
+      <recent name="com.bao.service.base" />
       <recent name="com.bao.enums" />
       <recent name="com.bao.controller" />
-      <recent name="com.bao.bo" />
-      <recent name="com.bao.service.impl" />
-      <recent name="com.bao.service" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.Application">
@@ -166,12 +215,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GeneratorDisplay" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.imooc.mybatis.utils.GeneratorDisplay" />
-      <module name="mybatis-generator-for-imooc" />
+    <configuration name="CommentLikeCountRefreshJob" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.bao.service.quartz.CommentLikeCountRefreshJob" />
+      <module name="book_service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.imooc.mybatis.utils.*" />
+          <option name="PATTERN" value="com.bao.service.quartz.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -192,28 +241,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.n3r.idworker.Test" />
-      <module name="book_common" />
+    <configuration name="CommentLikeCountRefreshJob.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="book_service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.n3r.idworker.*" />
+          <option name="PATTERN" value="com.bao.service.quartz.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="PACKAGE_NAME" value="com.bao.service.quartz" />
+      <option name="MAIN_CLASS_NAME" value="com.bao.service.quartz.CommentLikeCountRefreshJob" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -234,10 +273,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.Application" />
+        <item itemvalue="JUnit.CommentLikeCountRefreshJob.test" />
+        <item itemvalue="Application.CommentLikeCountRefreshJob" />
         <item itemvalue="Application.AdminGenerator (2)" />
         <item itemvalue="Application.Sid" />
-        <item itemvalue="Application.Test" />
-        <item itemvalue="Application.GeneratorDisplay" />
       </list>
     </recent_temporary>
   </component>
@@ -264,7 +303,7 @@
       <workItem from="1673093438522" duration="17250000" />
       <workItem from="1673162042720" duration="6727000" />
       <workItem from="1673172915605" duration="13415000" />
-      <workItem from="1673275868570" duration="12967000" />
+      <workItem from="1673275868570" duration="41110000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1673111268837</created>
@@ -294,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673193880356</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="系统通知模块完成">
+      <created>1673292219928</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1673292219928</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,7 +363,8 @@
     <MESSAGE value="second commit" />
     <MESSAGE value="视频点赞模块完成" />
     <MESSAGE value="评论模块完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="评论模块完成" />
+    <MESSAGE value="系统通知模块完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="系统通知模块完成" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

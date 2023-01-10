@@ -25,3 +25,19 @@ spring:
     mongodb:
       uri: mongodb://root:root@192.168.56.10:27017
       database: red_book
+  rabbitmq:
+    host: 192.168.56.10
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: red-book
+
+# MinIO 配置
+minio:
+  endpoint: http://192.168.56.10:9000      # MinIO服务地址
+  fileHost: http://192.168.56.10:9000      # 文件地址host
+  bucketName: red-book                      # 存储桶bucket名称
+  accessKey: bao                         # 用户名
+  secretKey: abc12345678                     # 密码
+  imgSize: 1024                           # 图片大小限制，单位：m
+  fileSize: 1024                          # 文件大小限制，单位：m

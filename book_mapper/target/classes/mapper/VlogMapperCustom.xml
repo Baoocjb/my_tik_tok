@@ -123,4 +123,34 @@
             v.created_time
         desc
     </select>
+
+    <select id="createTempTable" >
+        create temporary table temp(
+                   id varchar(24) not null primary key ,
+                   like_counts int
+        )
+    </select>
+
+    <insert id="insertList" parameterType="com.bao.pojo.Vlog">
+        insert into temp(id, like_counts)
+        values
+        <foreach collection="list" item="v" separator=",">
+            (#{v.id}, #{v.likeCounts})
+        </foreach>
+    </insert>
+
+    <update id="updateList">
+        update
+            vlog v
+                inner join
+                temp t
+                on
+                    v.id = v.id
+        set
+            v.like_counts = v.like_counts
+    </update>
+
+    <select id="delTempTable">
+        drop temporary table if exists temp
+    </select>
 </mapper>

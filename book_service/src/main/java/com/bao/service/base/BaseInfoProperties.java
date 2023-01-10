@@ -1,5 +1,6 @@
 package com.bao.service.base;
 
+import com.bao.mo.MessageMO;
 import com.bao.service.CommentService;
 import com.bao.service.UserService;
 import com.bao.service.VlogService;
@@ -10,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Map;
 
 public class BaseInfoProperties {
 
@@ -52,6 +54,9 @@ public class BaseInfoProperties {
     // 用户是否喜欢/点赞视频，取代数据库的关联关系，1：喜欢，0：不喜欢（默认） redis_user_like_vlog:{userId}:{vlogId}
     public static final String REDIS_USER_LIKE_VLOG = "redis_user_like_vlog";
 
+    // 消息路由前缀
+    public static final String SYS_MSG_PREFIX = "sys.msg.";
+
     public PagedGridResult setterPagedGrid(List<?> list,
                                            Integer page) {
         PageInfo<?> pageList = new PageInfo<>(list);
@@ -63,6 +68,26 @@ public class BaseInfoProperties {
         // 设置总页数
         gridResult.setTotal(pageList.getPages());
         return gridResult;
+    }
+
+    /**
+     * 构建msg
+     * @param fromUserId
+     * @param toUserId
+     * @param msgType
+     * @param msgContent
+     * @return
+     */
+    public MessageMO messageMOBuilder(String fromUserId,
+                                     String toUserId,
+                                     Integer msgType,
+                                     Map msgContent){
+        MessageMO messageMO = new MessageMO();
+        messageMO.setFromUserId(fromUserId);
+        messageMO.setToUserId(toUserId);
+        messageMO.setMsgType(msgType);
+        messageMO.setMsgContent(msgContent);
+        return messageMO;
     }
 
     /**

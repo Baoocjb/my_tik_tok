@@ -41,4 +41,34 @@
         where
             c.id = #{fatherCommentId}
     </select>
+
+    <select id="createTempTable" >
+        create temporary table temp(
+            id varchar(24) not null primary key ,
+            like_counts int
+        )
+    </select>
+    
+    <insert id="insertList" parameterType="com.bao.pojo.Comment">
+        insert into temp(id, like_counts)
+        values
+        <foreach collection="list" item="c" separator=",">
+            (#{c.id}, #{c.likeCounts})
+        </foreach>
+    </insert>
+
+    <update id="updateList">
+        update
+            comment c
+        inner join
+            temp t
+        on
+            c.id = t.id
+        set
+            c.like_counts = t.like_counts
+    </update>
+
+    <select id="delTempTable">
+        drop temporary table if exists temp
+    </select>
 </mapper>

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class PassportInterceptor extends BaseInfoProperties implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        // TODO 上线需要开启拦截器
+        // FIXME: 上线需要开启拦截器
 //        String reqIp = IPUtil.getRequestIp(request);
 //        if(redis.keyIsExist(MOBILE_SMSCODE + ":" + reqIp)){
 //            GraceException.display(ResponseStatusEnum.SMS_NEED_WAIT_ERROR);

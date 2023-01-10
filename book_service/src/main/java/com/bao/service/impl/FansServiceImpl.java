@@ -8,12 +8,15 @@ import com.bao.pojo.Fans;
 import com.bao.service.FansService;
 import com.bao.service.MsgService;
 import com.bao.service.base.BaseInfoProperties;
+import com.bao.service.base.RabbitMQConfig;
+import com.bao.utils.JsonUtils;
 import com.bao.utils.PagedGridResult;
 import com.bao.vo.FansVO;
 import com.bao.vo.VlogerVO;
 import com.github.pagehelper.PageHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.n3r.idworker.Sid;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,6 +34,8 @@ public class FansServiceImpl extends BaseInfoProperties implements FansService {
     private FansMapperCustom fansMapperCustom;
     @Autowired
     private MsgService msgService;
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
     @Autowired
     private Sid sid;
 
@@ -60,9 +65,12 @@ public class FansServiceImpl extends BaseInfoProperties implements FansService {
 
         // 系统通知: 关注
         Map<String, Object> msgContent = new HashMap<>();
-
         msgContent.put("isFriend", doIBeFollowed(myId, vlogerId));
-        msgService.createMsg(myId, vlogerId, MessageEnum.FOLLOW_YOU.type, msgContent);
+//        msgService.createMsg(myId, vlogerId, MessageEnum.FOLLOW_YOU.type, msgContent);
+
+        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_MSG,
+                SYS_MSG_PREFIX + MessageEnum.FOLLOW_YOU.enValue,
+                JsonUtils.objectToJson(messageMOBuilder(myId, vlogerId, MessageEnum.FOLLOW_YOU.type, msgContent)));
     }
 
     @Override

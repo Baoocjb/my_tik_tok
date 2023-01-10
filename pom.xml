@@ -52,6 +52,7 @@
         依赖的导入只有在各自的子工程中才会进行导入。
     -->
     <dependencyManagement>
+
         <dependencies>
             <!-- mysql 驱动 -->
             <dependency>

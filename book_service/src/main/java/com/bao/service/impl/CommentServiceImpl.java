@@ -13,12 +13,15 @@ import com.bao.service.CommentService;
 import com.bao.service.MsgService;
 import com.bao.service.VlogService;
 import com.bao.service.base.BaseInfoProperties;
+import com.bao.service.base.RabbitMQConfig;
+import com.bao.utils.JsonUtils;
 import com.bao.utils.PagedGridResult;
 import com.bao.utils.SensitiveFilterUtil;
 import com.bao.vo.CommentVO;
 import com.github.pagehelper.PageHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.n3r.idworker.Sid;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +44,8 @@ public class CommentServiceImpl extends BaseInfoProperties implements CommentSer
     private VlogService vlogService;
     @Autowired
     private SensitiveFilterUtil sensitiveFilterUtil;
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
     @Autowired
     private Sid sid;
 
@@ -81,17 +86,27 @@ public class CommentServiceImpl extends BaseInfoProperties implements CommentSer
 
         String toUserId;
         Integer type;
+        String routingKeySuffix;
         if(StringUtils.isNotBlank(comment.getFatherCommentId()) && !"0".equalsIgnoreCase(comment.getFatherCommentId())){
             // 说明是对 评论视频的人 的回复
             CommentVO fatherCommentVO = commentMapperCustom.queryTheFatherComment(comment.getFatherCommentId());
             toUserId = fatherCommentVO.getCommentUserId();
             type = MessageEnum.REPLY_YOU.type;
+            // 设置路由
+            routingKeySuffix = MessageEnum.REPLY_YOU.enValue;
         }else{
             // 说明是对视频博主的评论
             toUserId = comment.getVlogerId();
             type = MessageEnum.COMMENT_VLOG.type;
+            // 设置路由
+            routingKeySuffix = MessageEnum.COMMENT_VLOG.enValue;
         }
-        msgService.createMsg(comment.getCommentUserId(), toUserId, type, msgContent);
+//        msgService.createMsg(comment.getCommentUserId(), toUserId, type, msgContent);
+
+        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_MSG,
+                SYS_MSG_PREFIX + routingKeySuffix,
+                JsonUtils.objectToJson(messageMOBuilder(comment.getCommentUserId(), toUserId, type, msgContent)));
+
         return commentVO;
     }
 
@@ -110,7 +125,11 @@ public class CommentServiceImpl extends BaseInfoProperties implements CommentSer
         Vlog vlog = vlogService.getVlog(comment.getVlogId());
         msgContent.put("vlogId", vlog.getId());
         msgContent.put("vlogCover", vlog.getCover());
-        msgService.createMsg(userId, comment.getCommentUserId(), MessageEnum.LIKE_COMMENT.type, msgContent);
+//        msgService.createMsg(userId, comment.getCommentUserId(), MessageEnum.LIKE_COMMENT.type, msgContent);
+
+        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_MSG,
+                SYS_MSG_PREFIX + MessageEnum.LIKE_COMMENT.enValue,
+                JsonUtils.objectToJson(messageMOBuilder(userId, comment.getCommentUserId(), MessageEnum.LIKE_COMMENT.type, msgContent)));
     }
 
     @Override

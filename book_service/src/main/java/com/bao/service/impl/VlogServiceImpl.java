@@ -14,18 +14,26 @@ import com.bao.service.FansService;
 import com.bao.service.MsgService;
 import com.bao.service.VlogService;
 import com.bao.service.base.BaseInfoProperties;
+import com.bao.service.base.RabbitMQConfig;
+import com.bao.utils.JsonUtils;
 import com.bao.utils.PagedGridResult;
+import com.bao.utils.RedisDataSoureceTransaction;
 import com.bao.vo.IndexVlogVO;
 import com.github.pagehelper.PageHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.n3r.idworker.Sid;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
@@ -39,6 +47,8 @@ public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
     private MyLikedVlogMapper myLikedVlogMapper;
     @Autowired
     private MsgService msgService;
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
     @Autowired
     private Sid sid;
 
@@ -210,9 +220,8 @@ public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
     }
 
     @Override
-    @Transactional
     public void userLikeVlog(String userId, String vlogerId, String vlogId) {
-        // TODO (做成异步的)先操作数据库
+        // 先操作数据库
         String lid = sid.nextShort();
         MyLikedVlog myLikedVlog = new MyLikedVlog();
         myLikedVlog.setId(lid);
@@ -230,14 +239,16 @@ public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
         Map<String, Object> msgContent = new HashMap<>();
         msgContent.put("vlogCover", vlog.getCover());
         msgContent.put("vlogId", vlog.getId());
-        msgService.createMsg(userId, vlogerId, MessageEnum.LIKE_VLOG.type, msgContent);
+//        msgService.createMsg(userId, vlogerId, MessageEnum.LIKE_VLOG.type, msgContent);
 
+        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_MSG,
+                SYS_MSG_PREFIX + MessageEnum.LIKE_VLOG.enValue,
+                JsonUtils.objectToJson(messageMOBuilder(userId, vlogerId, MessageEnum.LIKE_VLOG.type, msgContent)));
     }
 
     @Override
-    @Transactional
     public void userUnlikeVlog(String userId, String vlogerId, String vlogId) {
-        // TODO (做成异步的)删除数据库记录
+        // 删除数据库记录
         Example example = new Example(MyLikedVlog.class);
         Example.Criteria criteria = example.createCriteria();
         criteria.andEqualTo("vlogId", vlogId);

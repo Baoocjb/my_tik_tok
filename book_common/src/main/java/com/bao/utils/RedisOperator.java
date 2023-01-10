@@ -23,6 +23,33 @@ public class RedisOperator {
 	@Autowired
 	private StringRedisTemplate redisTemplate;
 
+	// 事务操作
+	/**
+	 * 开启Redis 事务
+	 *
+	 */
+	public void begin() {
+		// 开启Redis 事务权限
+		redisTemplate.setEnableTransactionSupport(true);
+		// 开启事务
+		redisTemplate.multi();
+	}
+	/**
+	 * 提交事务
+	 *
+	 */
+	public void exec() {
+		// 成功提交事务
+		redisTemplate.exec();
+	}
+	/**
+	 * 回滚Redis 事务
+	 */
+	public void discard() {
+		redisTemplate.discard();
+	}
+
+
 	// Key（键），简单的key-value操作
 
 	/**

@@ -40,7 +40,7 @@ public class PassportController extends BaseInfoProperties {
         redis.setnx60s(MOBILE_SMSCODE + ":" + userIp, userIp);
         // 生成6位验证码
         String code = String.valueOf((int)((Math.random() * 9 + 1) * Math.pow(10, 5)));
-        // TODO 发送验证码
+        // FIXME: 发送验证码
 //        smsUtils.sendSMS(mobile, code);
         // 将验证码存入 Redis
         redis.set(MOBILE_SMSCODE + ":" + mobile, code, 30 * 60);
