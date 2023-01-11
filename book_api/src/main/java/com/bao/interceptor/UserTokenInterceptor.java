@@ -1,6 +1,6 @@
 package com.bao.interceptor;
 
-import com.bao.service.base.BaseInfoProperties;
+import com.bao.base.BaseInfoProperties;
 import com.bao.exception.GraceException;
 import com.bao.result.ResponseStatusEnum;
 import lombok.extern.slf4j.Slf4j;

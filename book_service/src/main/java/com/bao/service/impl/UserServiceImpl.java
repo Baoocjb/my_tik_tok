@@ -9,7 +9,7 @@ import com.bao.mapper.UsersMapper;
 import com.bao.pojo.Users;
 import com.bao.result.ResponseStatusEnum;
 import com.bao.service.UserService;
-import com.bao.service.base.BaseInfoProperties;
+import com.bao.base.BaseInfoProperties;
 import com.bao.utils.DateUtil;
 import com.bao.utils.DesensitizationUtil;
 import com.bao.utils.SensitiveFilterUtil;

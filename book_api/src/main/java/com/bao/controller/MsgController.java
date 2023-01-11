@@ -4,7 +4,7 @@ import com.bao.mo.MessageMO;
 import com.bao.result.GraceJSONResult;
 import com.bao.result.ResponseStatusEnum;
 import com.bao.service.MsgService;
-import com.bao.service.base.BaseInfoProperties;
+import com.bao.base.BaseInfoProperties;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

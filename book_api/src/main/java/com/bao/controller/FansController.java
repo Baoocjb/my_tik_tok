@@ -4,7 +4,7 @@ import com.bao.result.GraceJSONResult;
 import com.bao.result.ResponseStatusEnum;
 import com.bao.service.FansService;
 import com.bao.service.UserService;
-import com.bao.service.base.BaseInfoProperties;
+import com.bao.base.BaseInfoProperties;
 import com.bao.utils.PagedGridResult;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;

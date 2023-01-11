@@ -1,6 +1,9 @@
 package com.bao.interceptor;
 
-import com.bao.service.base.BaseInfoProperties;
+import com.bao.exception.GraceException;
+import com.bao.result.ResponseStatusEnum;
+import com.bao.base.BaseInfoProperties;
+import com.bao.utils.IPUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -11,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 public class PassportInterceptor extends BaseInfoProperties implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        // FIXME: 上线需要开启拦截器
-//        String reqIp = IPUtil.getRequestIp(request);
-//        if(redis.keyIsExist(MOBILE_SMSCODE + ":" + reqIp)){
-//            GraceException.display(ResponseStatusEnum.SMS_NEED_WAIT_ERROR);
-//            log.warn("短信发送频率太快!");
-//            return false;
-//        }
+        // 上线需要开启拦截器
+        String reqIp = IPUtil.getRequestIp(request);
+        if(redis.keyIsExist(MOBILE_SMSCODE + ":" + reqIp)){
+            GraceException.display(ResponseStatusEnum.SMS_NEED_WAIT_ERROR);
+            log.warn("短信发送频率太快!");
+            return false;
+        }
         return true;
     }
 }

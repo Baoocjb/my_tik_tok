@@ -6,11 +6,10 @@ import com.bao.result.GraceJSONResult;
 import com.bao.result.ResponseStatusEnum;
 import com.bao.service.UserService;
 import com.bao.service.VlogService;
-import com.bao.service.base.BaseInfoProperties;
+import com.bao.base.BaseInfoProperties;
 import com.bao.utils.PagedGridResult;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

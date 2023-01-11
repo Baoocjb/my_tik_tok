@@ -5,7 +5,7 @@ import com.bao.pojo.Users;
 import com.bao.result.GraceJSONResult;
 import com.bao.result.ResponseStatusEnum;
 import com.bao.service.UserService;
-import com.bao.service.base.BaseInfoProperties;
+import com.bao.base.BaseInfoProperties;
 import com.bao.utils.IPUtil;
 import com.bao.utils.SMSUtils;
 import com.bao.vo.UsersVO;
@@ -40,8 +40,8 @@ public class PassportController extends BaseInfoProperties {
         redis.setnx60s(MOBILE_SMSCODE + ":" + userIp, userIp);
         // 生成6位验证码
         String code = String.valueOf((int)((Math.random() * 9 + 1) * Math.pow(10, 5)));
-        // FIXME: 发送验证码
-//        smsUtils.sendSMS(mobile, code);
+        // 发送验证码
+        smsUtils.sendSMS(mobile, code);
         // 将验证码存入 Redis
         redis.set(MOBILE_SMSCODE + ":" + mobile, code, 30 * 60);
         log.info(code);

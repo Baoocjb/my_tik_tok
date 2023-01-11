@@ -12,8 +12,8 @@ import com.bao.result.ResponseStatusEnum;
 import com.bao.service.CommentService;
 import com.bao.service.MsgService;
 import com.bao.service.VlogService;
-import com.bao.service.base.BaseInfoProperties;
-import com.bao.service.base.RabbitMQConfig;
+import com.bao.base.BaseInfoProperties;
+import com.bao.base.RabbitMQConfig;
 import com.bao.utils.JsonUtils;
 import com.bao.utils.PagedGridResult;
 import com.bao.utils.SensitiveFilterUtil;
@@ -115,9 +115,6 @@ public class CommentServiceImpl extends BaseInfoProperties implements CommentSer
         // 利用Hash存储, 方便定期入库
         redis.incrementHash(REDIS_VLOG_COMMENT_LIKED_COUNTS, commentId, 1);
         redis.set(REDIS_USER_LIKE_COMMENT + ":" + userId + ":" + commentId, "1");
-
-        // TODO 添加定时任务, 刷入数据库
-        // https://cloud.tencent.com/developer/article/1536852
 
         // 系统通知: 点赞评论
         Comment comment = getComment(commentId);

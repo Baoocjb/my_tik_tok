@@ -1,7 +1,7 @@
 package com.bao.config;
 
-import com.bao.service.quartz.CommentLikeCountRefreshJob;
-import com.bao.service.quartz.VlogLikeCountRefreshJob;
+import com.bao.quartz.CommentLikeCountRefreshJob;
+import com.bao.quartz.VlogLikeCountRefreshJob;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
 import org.springframework.context.annotation.Bean;

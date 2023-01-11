@@ -49,8 +49,8 @@ public enum ResponseStatusEnum {
     SYSTEM_CLASS_CAST(548, false, "系统错误，类型强制转换错误！"),
     SYSTEM_PARSER_ERROR(549, false, "系统错误，解析出错！"),
     SYSTEM_DATE_PARSER_ERROR(550, false, "系统错误，日期解析出错！"),
-    // FIXME: 改为系统繁忙
-    SYSTEM_ARGS_ERROR(551, false, "参数出错！"),
+    // 改为系统繁忙
+    SYSTEM_ARGS_ERROR(551, false, "系统繁忙！"),
 
     // admin 管理系统 56x
     ADMIN_USERNAME_NULL_ERROR(561, false, "管理员登录名不能为空！"),
