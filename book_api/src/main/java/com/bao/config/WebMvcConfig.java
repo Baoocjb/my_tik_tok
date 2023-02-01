@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
+
     @Bean
     public PassportInterceptor passportInterceptor(){
         return new PassportInterceptor();
@@ -30,4 +31,5 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(userTokenInterceptor()).addPathPatterns("/userInfo/modifyImage", "/userInfo/modifyUserInfo");
 //        registry.addInterceptor(serviceAdviceInterceptor()).addPathPatterns("/**");
     }
+
 }

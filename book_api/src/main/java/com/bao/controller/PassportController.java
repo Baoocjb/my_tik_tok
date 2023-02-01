@@ -1,11 +1,11 @@
 package com.bao.controller;
 
+import com.bao.base.BaseInfoProperties;
 import com.bao.bo.LoginRegisterBO;
 import com.bao.pojo.Users;
 import com.bao.result.GraceJSONResult;
 import com.bao.result.ResponseStatusEnum;
 import com.bao.service.UserService;
-import com.bao.base.BaseInfoProperties;
 import com.bao.utils.IPUtil;
 import com.bao.utils.SMSUtils;
 import com.bao.vo.UsersVO;
@@ -45,6 +45,7 @@ public class PassportController extends BaseInfoProperties {
         // 将验证码存入 Redis
         redis.set(MOBILE_SMSCODE + ":" + mobile, code, 30 * 60);
         log.info(code);
+
         return GraceJSONResult.ok();
     }
 

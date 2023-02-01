@@ -30,4 +30,5 @@ public class MinIOConfig {
     public MinIOUtils creatMinioClient() {
         return new MinIOUtils(endpoint, bucketName, accessKey, secretKey, imgSize, fileSize);
     }
+
 }

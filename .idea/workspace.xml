@@ -4,50 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35297107-d01b-4092-969c-244040c39e3e" name="Default Changelist" comment="点赞数据定时任务落库,系统通知使用RabbitMQ解耦完成">
+    <list default="true" id="35297107-d01b-4092-969c-244040c39e3e" name="Default Changelist" comment="项目完成,生产环境打包发布">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/config/QuartConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/config/QuartConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/config/MinIOConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/config/MinIOConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/config/WebMvcConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/FansController.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/FansController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/MsgController.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/MsgController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/PassportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/PassportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/TestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/UserInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/VlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/controller/VlogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/interceptor/PassportInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/interceptor/PassportInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/interceptor/ServiceAdviceInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/interceptor/ServiceAdviceInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/src/main/java/com/bao/interceptor/UserTokenInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/java/com/bao/interceptor/UserTokenInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/resources/application-prod.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/classes/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/target/classes/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/classes/application-prod.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/target/classes/com/bao/controller/FansController.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/classes/com/bao/controller/FansController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/target/classes/com/bao/controller/PassportController.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/classes/com/bao/controller/PassportController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/target/classes/com/bao/controller/UserInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/classes/com/bao/controller/UserInfoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/target/classes/com/bao/controller/VlogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/classes/com/bao/controller/VlogController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/target/classes/com/bao/interceptor/PassportInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/classes/com/bao/interceptor/PassportInterceptor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/target/classes/com/bao/interceptor/ServiceAdviceInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/classes/com/bao/interceptor/ServiceAdviceInterceptor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_api/target/classes/com/bao/interceptor/UserTokenInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_api/target/classes/com/bao/interceptor/UserTokenInterceptor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_common/src/main/java/com/bao/result/ResponseStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_common/src/main/java/com/bao/result/ResponseStatusEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_common/target/classes/com/bao/result/ResponseStatusEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_common/target/classes/com/bao/result/ResponseStatusEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_mapper/src/main/resources/mapper/VlogMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/src/main/resources/mapper/VlogMapperCustom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_mapper/target/classes/mapper/VlogMapperCustom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/book_mapper/target/classes/mapper/VlogMapperCustom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/base/BaseInfoProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/base/BaseInfoProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/base/RabbitMQConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/base/RabbitMQConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/customer/RabbitCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/customer/RabbitCustomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/CommentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/FansServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/FansServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/VlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/impl/VlogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/quartz/CommentLikeCountRefreshJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/quartz/CommentLikeCountRefreshJob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/src/main/java/com/bao/service/quartz/VlogLikeCountRefreshJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/src/main/java/com/bao/quartz/VlogLikeCountRefreshJob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/base/BaseInfoProperties.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/impl/FansServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/impl/FansServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/impl/VlogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/book_service/target/classes/com/bao/service/impl/VlogServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +231,14 @@
       <workItem from="1673172915605" duration="13415000" />
       <workItem from="1673275868570" duration="41110000" />
       <workItem from="1673376878753" duration="314000" />
-      <workItem from="1673418298124" duration="8652000" />
+      <workItem from="1673418298124" duration="10705000" />
+      <workItem from="1673671897192" duration="1660000" />
+      <workItem from="1673802768010" duration="27000" />
+      <workItem from="1673880037430" duration="125000" />
+      <workItem from="1674208455990" duration="7162000" />
+      <workItem from="1674749215791" duration="3574000" />
+      <workItem from="1674821815985" duration="1445000" />
+      <workItem from="1674973409328" duration="2560000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1673111268837</created>
@@ -313,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673377186086</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="项目完成,生产环境打包发布">
+      <created>1673456463490</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1673456463490</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,7 +314,8 @@
     <MESSAGE value="评论模块完成" />
     <MESSAGE value="系统通知模块完成" />
     <MESSAGE value="点赞数据定时任务落库,系统通知使用RabbitMQ解耦完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="点赞数据定时任务落库,系统通知使用RabbitMQ解耦完成" />
+    <MESSAGE value="项目完成,生产环境打包发布" />
+    <option name="LAST_COMMIT_MESSAGE" value="项目完成,生产环境打包发布" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
